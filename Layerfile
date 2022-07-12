@@ -1,6 +1,6 @@
 # Node v12
 FROM vm/ubuntu:22.04
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o /tmp/nodesource_setup.sh
+RUN curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
 RUN sudo bash /tmp/nodesource_setup.sh
 RUN sudo apt install nodejs
 RUN node -v
