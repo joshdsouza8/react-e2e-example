@@ -1,10 +1,9 @@
 # Node v12
 FROM vm/ubuntu:18.04
-RUN apt-get install curl
-RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-RUN sudo apt install nodejs
-RUN node -v
-RUN npm -v
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+RUN sudo npm install npm@latest -g
+
     
 # Install python
 RUN apt-get update && apt-get install python3
