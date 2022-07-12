@@ -1,22 +1,27 @@
 # Node v12
 FROM vm/ubuntu:22.04
-MEMORY 2G
 RUN curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
 RUN sudo bash /tmp/nodesource_setup.sh
 RUN sudo apt install nodejs
 RUN node -v
 RUN sudo npm install npm@latest -g
-
-# node is a memory hog
-ENV NODE_OPTIONS=--max-old-space-size=8192
     
+# Install python
+RUN apt-get update && apt-get install python3
+
+# Create some files
+RUN echo '<b>some html</b>' > hello.html
+RUN echo '<b>another file</b>' > another.html
+
+# You could also install & start a database:
+# RUN apt-get update && apt-get install postgresql
+
+# This line copies the repository to /root in the runner
 COPY . .
-RUN mkdir cypress
-RUN npm install
-RUN BACKGROUND npm start
-RUN BACKGROUND cd cypress && python3 -m http.server 8000
+RUN ls
 
-RUN ./node_modules/.bin/cypress run
-
-# start a webserver to view test results, open
-EXPOSE WEBSITE http://localhost:8000
+# Expose the webserver in the staging server as a secure link.
+# Whenever someone clicks the link, we'll load this staging server and forward
+# their requests to it.
+RUN BACKGROUND python3 -m http.server 80
+EXPOSE WEBSITE http://localhost:80
