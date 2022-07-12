@@ -1,6 +1,6 @@
 # Node v12
 FROM vm/ubuntu:22.04
-RUN sudo apt-get install curl
+RUN apt-get install curl
 RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 RUN sudo apt install nodejs
 RUN node -v
