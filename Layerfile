@@ -1,5 +1,4 @@
 # Node v12
-FROM vm/ubuntu:22.04
-
+FROM webapp.io/base:latest
 COPY . .
 RUN ls
