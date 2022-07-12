@@ -1,3 +1,4 @@
 # Node v12
 FROM vm/ubuntu:22.04
+RUN COPY . .
 RUN ls
