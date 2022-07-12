@@ -1,3 +1,5 @@
+MEMORY 2G
+
 # Node v12
 FROM vm/ubuntu:22.04
 RUN curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
@@ -7,7 +9,6 @@ RUN node -v
 RUN sudo npm install npm@latest -g
 
 # node is a memory hog
-MEMORY 2G
 ENV NODE_OPTIONS=--max-old-space-size=8192
     
 COPY . .
